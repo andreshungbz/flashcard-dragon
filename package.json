@@ -19,7 +19,10 @@
     "build": "npm run clean && tsc",
     "test": "vitest --run",
     "start": "npm run build && node build/app.js",
-    "dev": "tsc && concurrently -k -n \"TS,NODE\" -c \"cyan,green\" \"tsc --watch\" \"wait-on build/app.js && node --watch build/app.js\""
+    "dev": "tsc && concurrently -k -n \"TS,NODE\" -c \"cyan,green\" \"tsc --watch\" \"wait-on build/app.js && node --watch build/app.js\"",
+    "dbsetup": "psql --username=postgres --file=src/config/database/scripts/setup.sql",
+    "dbtables": "psql --username=fcd_user --dbname=flashcard_dragon --file=src/config/database/scripts/tables.sql",
+    "dbinitiate": "npm run dbsetup && npm run dbtables"
   },
   "dependencies": {
     "dotenv": "^16.5.0",
