@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include('partials/meta') %>
     <title>Flashcard Dragon</title>
   </head>
   <body>
-    <h1>Flashcard Dragon</h1>
+    <div class="app">
+      <%- include('partials/header') %>
+      <main class="home-grid">
+        <div class="test"></div>
+        <div class="test"></div>
+        <div class="test"></div>
+      </main>
+      <%- include('partials/footer') %>
+    </div>
   </body>
 </html>

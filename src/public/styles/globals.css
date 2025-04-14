@@ -1,0 +1,107 @@
+/* colors */
+/* https://coolors.co/13293d-006494-247ba0-1b98e0-e8f1f2 */
+:root {
+  --prussian-blue: #13293d;
+  --lapis-lazuli: #006494;
+  --cerulean: #247ba0;
+  --celestial-blue: #1b98e0;
+  --alice-blue: #e8f1f2;
+  --selective-yellow: #f5b408;
+}
+
+/* style reset */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* body */
+
+body {
+  background-color: var(--alice-blue);
+  font-family: Arial, sans-serif;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app > main {
+  flex: 1;
+}
+
+/* header & footer */
+
+header,
+footer {
+  display: flex;
+  align-items: center;
+  padding: 0 25px;
+  background-color: var(--lapis-lazuli);
+}
+
+header {
+  gap: 20px;
+  min-height: 75px;
+}
+
+footer {
+  justify-content: end;
+  min-height: 50px;
+}
+
+/* navigation */
+
+.title {
+  padding: 4px 10px;
+  background-color: var(--selective-yellow);
+  border: 2px solid var(--prussian-blue);
+  font-weight: bold;
+  color: var(--prussian-blue);
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.navigation {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 2px 10px;
+  transition: transform 0.2s ease;
+  background-color: var(--alice-blue);
+  border: 2px solid var(--prussian-blue);
+  font-weight: bold;
+  color: var(--prussian-blue);
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.nav-link:hover {
+  background-color: var(--selective-yellow);
+  color: var(--prussian-blue);
+}
+
+/* responsive styling */
+
+@media screen and (max-width: 825px) {
+  header {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 25px;
+  }
+
+  footer {
+    justify-content: center;
+  }
+}
