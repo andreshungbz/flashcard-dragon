@@ -1,0 +1,47 @@
+/* colors */
+/* https://coolors.co/13293d-006494-247ba0-1b98e0-e8f1f2 */
+:root {
+  --prussian-blue: #13293d;
+  --lapis-lazuli: #006494;
+  --cerulean: #247ba0;
+  --celestial-blue: #1b98e0;
+  --alice-blue: #e8f1f2;
+  --selective-yellow: #f5b408;
+}
+
+.sets-list {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+}
+
+.set-link {
+  display: block;
+  width: 100%;
+  color: var(--prussian-blue);
+  text-decoration: none;
+}
+
+.set-card {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: var(--alice-blue);
+  border: 2px solid var(--prussian-blue);
+}
+
+.set-card:hover {
+  background-color: var(--selective-yellow);
+}
+
+.last-updated {
+  margin-top: 5px;
+  font-size: small;
+  color: var(--cerulean);
+}
+
+@media screen and (max-width: 825px) {
+  .sets-list {
+    width: 100%;
+  }
+}

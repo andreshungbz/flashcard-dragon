@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/meta') %>
+    <link href="/styles/sets.css" rel="stylesheet" />
+    <title>Flashcard Sets</title>
+  </head>
+  <body>
+    <div class="app">
+      <%- include('partials/header') %>
+      <main>
+        <section class="sets-list">
+          <% sets.forEach(set => { %>
+          <a class="set-link" href="/set/<%= set.id %>">
+            <div class="set-card">
+              <h2><%= set.name %></h2>
+              <p><%= set.description %></p>
+              <span class="last-updated"
+                >Last Updated: <%= set.updated_at %></span
+              >
+            </div>
+          </a>
+          <% }) %>
+        </section>
+      </main>
+      <%- include('partials/footer') %>
+    </div>
+  </body>
+</html>
