@@ -59,7 +59,7 @@ DECLARE
 BEGIN
 
     INSERT INTO set (name, description)
-    VALUES ('BINT Course Codes', 'Professional Core Courses for the University of Belize AINT program.')
+    VALUES ('BINT Course Codes', 'Professional Core Courses for the University of Belize BINT program.')
     RETURNING id INTO bint_cc_id;
 
     INSERT INTO card (set_id, question, answer)
