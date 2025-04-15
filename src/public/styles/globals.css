@@ -107,6 +107,17 @@ p {
   margin: 5px 0;
 }
 
+.message {
+  background-color: var(--alice-blue);
+  font-size: x-large;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 10px 25px;
+  border: 2px solid var(--prussian-blue);
+  align-self: center;
+}
+
 /* responsive styling */
 
 @media screen and (max-width: 825px) {
