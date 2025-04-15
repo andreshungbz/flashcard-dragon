@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/meta') %>
+    <link href="/styles/grids/set.css" rel="stylesheet" />
+    <title><%= result.set.name %></title>
+  </head>
+  <body>
+    <div class="app">
+      <%- include('partials/header') %>
+      <main>
+        <section class="set-grid">
+          <div class="set-grid-description">
+            <h2><%= result.set.name %></h2>
+            <p><%= result.set.description %></p>
+            <span class="date">Created: <%= result.set.created_at %></span>
+            <span class="date">Last Updated: <%= result.set.updated_at %></span>
+          </div>
+          <a class="set-grid-update" href="/set/<%= result.set.id %>/update"
+            >Update</a
+          >
+          <a class="set-grid-delete" href="/set/<%= result.set.id %>/delete"
+            >Delete</a
+          >
+          <a class="set-grid-study" href="/set/<%= result.set.id %>/study"
+            >Study</a
+          >
+        </section>
+        <section class="set-cards">
+          <% result.cards.forEach(card => { %>
+          <div class="set-card">
+            <div>
+              <h3><%= card.question %></h3>
+              <p><%= card.answer %></p>
+            </div>
+            <div class="set-card-options">
+              <a class="card-option-update" href="/card/<%= card.id %>/update"
+                >Update</a
+              >
+              <a class="card-option-delete" href="/card/<%= card.id %>/delete"
+                >Delete</a
+              >
+            </div>
+          </div>
+          <% }) %>
+        </section>
+        <section class="new-card-form">
+          <form class="set-card-form">
+            <input type="hidden" name="set_id" value="<%= result.set.id %>" />
+            <div class="form-group">
+              <label for="question">Question</label>
+              <input
+                type="text"
+                id="question"
+                name="question"
+                placeholder="Enter the question"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="answer">Answer</label>
+              <input
+                type="text"
+                id="answer"
+                name="answer"
+                placeholder="Enter the answer"
+                required
+              />
+            </div>
+            <button type="button" class="form-submit">Add Card</button>
+          </form>
+        </section>
+      </main>
+      <%- include('partials/footer') %>
+    </div>
+  </body>
+</html>

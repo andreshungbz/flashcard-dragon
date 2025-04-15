@@ -80,25 +80,26 @@ footer {
   transition: transform 0.2s ease;
   background-color: var(--alice-blue);
   border: 2px solid var(--prussian-blue);
+  font-size: medium;
   font-weight: bold;
   color: var(--prussian-blue);
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-  font-size: medium;
 }
 
 .nav-link:hover {
   background-color: var(--selective-yellow);
-  color: var(--prussian-blue);
 }
 
 /* main */
 
 main {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 10px;
   padding: 10px;
 }
 
@@ -109,14 +110,14 @@ p {
 }
 
 .message {
+  align-self: center;
+  padding: 10px 25px;
   background-color: var(--alice-blue);
+  border: 2px solid var(--prussian-blue);
   font-size: x-large;
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
-  padding: 10px 25px;
-  border: 2px solid var(--prussian-blue);
-  align-self: center;
 }
 
 /* responsive styling */
