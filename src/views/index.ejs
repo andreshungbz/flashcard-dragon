@@ -2,15 +2,34 @@
 <html lang="en">
   <head>
     <%- include('partials/meta') %>
+    <link href="/styles/grids/home.css" rel="stylesheet" />
     <title>Flashcard Dragon</title>
   </head>
   <body>
     <div class="app">
       <%- include('partials/header') %>
-      <main class="home-grid">
-        <div class="test"></div>
-        <div class="test"></div>
-        <div class="test"></div>
+      <main>
+        <div class="home-grid">
+          <div class="home-grid-hero">
+            <img src="/images/qml-video-recorder.png" alt="test image" />
+          </div>
+          <div class="home-grid-description">
+            <h2>Welcome to Flashcard Dragon!</h2>
+            <p>
+              Flashcard Dragon is a personal, self-hosted flashcard creator
+              service and study tool. Data is stored in a PostgreSQL database.
+              To examine the source code, visit the GitHub repository located in
+              the footer.
+            </p>
+            <p>
+              To get started, create a new flashcard set or view all existing
+              sets. You can also study a randomly selected set by clicking
+              random in the navigation bar.
+            </p>
+          </div>
+          <a class="home-grid-create" href="/create">Create New Set</a>
+          <a class="home-grid-view" href="sets">View All Sets</a>
+        </div>
       </main>
       <%- include('partials/footer') %>
     </div>

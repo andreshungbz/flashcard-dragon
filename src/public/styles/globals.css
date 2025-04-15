@@ -21,7 +21,7 @@
 /* body */
 
 body {
-  background-color: var(--alice-blue);
+  background-color: #3685aa;
   font-family: Arial, sans-serif;
 }
 
@@ -92,6 +92,21 @@ footer {
   color: var(--prussian-blue);
 }
 
+/* main */
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+/* other */
+
+p {
+  margin: 5px 0;
+}
+
 /* responsive styling */
 
 @media screen and (max-width: 825px) {
@@ -103,5 +118,9 @@ footer {
 
   footer {
     justify-content: center;
+  }
+
+  main {
+    align-items: start;
   }
 }
