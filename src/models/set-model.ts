@@ -10,7 +10,10 @@ import { Set } from '../lib/Set.js';
 
 export const readAllSets = async (): Promise<Set[]> => {
   try {
-    const result = await query('SELECT * FROM set', []);
+    const result = await query(
+      'SELECT * FROM set ORDER BY updated_at DESC',
+      []
+    );
 
     return result.rows.map((set) => {
       return {
