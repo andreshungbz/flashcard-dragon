@@ -15,12 +15,74 @@ CREATE TABLE set (
 
 CREATE TABLE card (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    set_id UUID REFERENCES set(id) ON DELETE CASCADE,
+    set_id UUID NOT NULL REFERENCES set(id) ON DELETE CASCADE,
     question TEXT NOT NULL,
     answer TEXT NOT NULL,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
+
+\echo '\033[1;34m[PSQL] Creating Triggers\033[0m'
+
+-- Trigger setup that updates a set's updated_at when:
+-- set is updated
+-- card created in the set
+-- card updated in the set
+-- card deleted from the set
+
+CREATE OR REPLACE FUNCTION update_set_updated_at_from_card()
+RETURNS TRIGGER AS $$
+BEGIN
+  UPDATE set
+  SET updated_at = NOW()
+  WHERE id = NEW.set_id OR id = OLD.set_id;
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION update_set_updated_at_self()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updated_at := NOW();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER set_update_trigger
+BEFORE UPDATE ON set
+FOR EACH ROW
+EXECUTE FUNCTION update_set_updated_at_self();
+
+CREATE TRIGGER card_insert_trigger
+AFTER INSERT ON card
+FOR EACH ROW
+EXECUTE FUNCTION update_set_updated_at_from_card();
+
+CREATE TRIGGER card_update_trigger
+AFTER UPDATE ON card
+FOR EACH ROW
+EXECUTE FUNCTION update_set_updated_at_from_card();
+
+CREATE TRIGGER card_delete_trigger
+AFTER DELETE ON card
+FOR EACH ROW
+EXECUTE FUNCTION update_set_updated_at_from_card();
+
+-- Trigger setup that updates a card's updated_at when:
+-- card is updated
+
+CREATE OR REPLACE FUNCTION update_card_updated_at()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updated_at := NOW();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER card_update_timestamp_trigger
+BEFORE UPDATE ON card
+FOR EACH ROW
+EXECUTE FUNCTION update_card_updated_at();
 
 \echo '\033[1;34m[PSQL] Inserting Example Data\033[0m'
 
