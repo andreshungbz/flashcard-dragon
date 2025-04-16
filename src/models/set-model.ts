@@ -19,7 +19,7 @@ export const createSet = async (
     );
 
     if (result.rowCount === 0) {
-      throw new Error('Flashcard set failed to be created.');
+      throw new Error('[Set Model] Set creation failed');
     }
 
     const id = result.rows[0].id;
@@ -59,7 +59,7 @@ export const readSet = async (
     const result = await query('SELECT * FROM set WHERE id = $1', [uuid]);
 
     if (result.rowCount === 0) {
-      throw new Error('Set with specified ID does not exist.');
+      throw new Error('[Set Model] Set read failed');
     }
 
     const set = result.rows[0];
@@ -94,7 +94,7 @@ export const updateSet = async (
     );
 
     if (result.rowCount === 0) {
-      throw new Error('Set with specified ID does not exist.');
+      throw new Error('[Set Model] Set update failed');
     }
   } catch (error) {
     throw error;
@@ -108,7 +108,7 @@ export const deleteSet = async (id: string) => {
     const result = await query('DELETE FROM set WHERE id = $1', [id]);
 
     if (result.rowCount === 0) {
-      throw new Error('Set with specified ID does not exist.');
+      throw new Error('[Set Model] Set deletion failed');
     }
   } catch (error) {
     throw error;

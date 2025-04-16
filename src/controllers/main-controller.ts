@@ -2,26 +2,23 @@
 // controllers for main-route.ts
 
 import { Request, Response } from 'express';
+import datestringConvert from '../utils/datestring-convert.js';
+
 import { readAllSets } from '../models/set-model.js';
 
+// renders home page
 export const getIndex = (_req: Request, res: Response) => {
   res.render('index');
 };
 
+// renders sets page
 export const getSets = async (_req: Request, res: Response) => {
   try {
     const sets = await readAllSets();
 
-    // convert Date object to formatted date string
+    // convert date properties to strings
     sets.forEach((set) => {
-      set.updated_at = set.updated_at.toLocaleString('en-US', {
-        day: '2-digit',
-        month: 'long',
-        year: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-      });
+      datestringConvert(set);
     });
 
     res.render('sets', { sets });

@@ -2,36 +2,24 @@
 // controllers for set-route.ts
 
 import { Request, Response } from 'express';
+import stringConvert from '../utils/string-convert.js';
+import datestringConvert from '../utils/datestring-convert.js';
+
 import {
   createSet,
   deleteSet,
   readSet,
   updateSet,
 } from '../models/set-model.js';
-import stringConvert from '../utils/string-convert.js';
 
+// renders set page
 export const getSet = async (req: Request, res: Response) => {
   try {
     const uuid = req.params.id;
     const result = await readSet(uuid);
 
-    result.set.created_at = result.set.created_at.toLocaleString('en-US', {
-      day: '2-digit',
-      month: 'long',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-    });
-
-    result.set.updated_at = result.set.updated_at.toLocaleString('en-US', {
-      day: '2-digit',
-      month: 'long',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-    });
+    // convert date properties to strings
+    datestringConvert(result.set);
 
     res.render('set', { result });
   } catch (error) {
@@ -40,19 +28,22 @@ export const getSet = async (req: Request, res: Response) => {
   }
 };
 
+// renders create set page
 export const getCreateSet = (_req: Request, res: Response) => {
   res.render('create-set');
 };
 
+// creates set in database and redirects to set page
 export const postCreateSet = async (req: Request, res: Response) => {
   try {
     const setName = stringConvert(req.body.set_name);
     const setDesc = stringConvert(req.body.set_desc);
 
+    // server-side required check
     if (!setName || !setDesc) {
-      return res
-        .status(400)
-        .render('error', { message: 'Required Field Missing' });
+      return res.status(400).render('error', {
+        message: 'Required Name/Description Field Missing',
+      });
     }
 
     const id = await createSet(setName, setDesc);
@@ -63,6 +54,7 @@ export const postCreateSet = async (req: Request, res: Response) => {
   }
 };
 
+// renders update set page
 export const getUpdateSet = async (req: Request, res: Response) => {
   try {
     const uuid = req.params.id;
@@ -74,6 +66,7 @@ export const getUpdateSet = async (req: Request, res: Response) => {
   }
 };
 
+// updates set in database and redirects to set page
 export const postUpdateSet = async (req: Request, res: Response) => {
   try {
     const uuid = req.params.id;
@@ -81,10 +74,11 @@ export const postUpdateSet = async (req: Request, res: Response) => {
     const setName = stringConvert(req.body.set_name);
     const setDesc = stringConvert(req.body.set_desc);
 
+    // server-side required check
     if (!setName || !setDesc) {
-      return res
-        .status(400)
-        .render('error', { message: 'Required Field Missing' });
+      return res.status(400).render('error', {
+        message: 'Required Name/Description Field Missing',
+      });
     }
 
     await updateSet(uuid, setName, setDesc);
@@ -95,6 +89,7 @@ export const postUpdateSet = async (req: Request, res: Response) => {
   }
 };
 
+// deletes set from database and redirects to sets page
 export const getDeleteSet = async (req: Request, res: Response) => {
   try {
     const uuid = req.params.id;
