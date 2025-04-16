@@ -80,6 +80,19 @@ export const readSet = async (
   }
 };
 
+export const readRandomSet = async (): Promise<string> => {
+  try {
+    const result = await query(
+      'SELECT * FROM set ORDER BY RANDOM() LIMIT 1',
+      []
+    );
+
+    return result.rowCount !== 0 ? result.rows[0].id : '';
+  } catch (error) {
+    throw error;
+  }
+};
+
 // UPDATE
 
 export const updateSet = async (

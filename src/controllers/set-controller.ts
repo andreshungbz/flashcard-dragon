@@ -8,6 +8,7 @@ import datestringConvert from '../utils/datestring-convert.js';
 import {
   createSet,
   deleteSet,
+  readRandomSet,
   readSet,
   updateSet,
 } from '../models/set-model.js';
@@ -109,6 +110,22 @@ export const getDeleteSet = async (req: Request, res: Response) => {
     const uuid = req.params.id;
     await deleteSet(uuid);
     res.redirect('/sets');
+  } catch (error) {
+    console.error(error);
+    res.status(500).render('error', { message: '500 Internal Server Error' });
+  }
+};
+
+// renders the study page of a random set
+export const getRandomSet = async (_req: Request, res: Response) => {
+  try {
+    const randomUUID = await readRandomSet();
+
+    if (!randomUUID) {
+      return res.status(404).render('error', { message: 'No Sets Yet' });
+    }
+
+    res.redirect(`/set/${randomUUID}/study`);
   } catch (error) {
     console.error(error);
     res.status(500).render('error', { message: '500 Internal Server Error' });

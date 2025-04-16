@@ -6,6 +6,7 @@ import express from 'express';
 import {
   getCreateSet,
   getDeleteSet,
+  getRandomSet,
   getSet,
   getUpdateSet,
   postCreateSet,
@@ -14,6 +15,7 @@ import {
 
 const setRoute = express.Router();
 
+setRoute.get('/random', getRandomSet);
 setRoute.get('/create', getCreateSet);
 setRoute.post('/create', postCreateSet);
 setRoute.get('/:id/update', getUpdateSet);
