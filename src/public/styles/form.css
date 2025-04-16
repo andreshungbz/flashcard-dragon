@@ -53,6 +53,24 @@
   background-color: #ffbf11;
 }
 
+.form-cancel {
+  display: block;
+  padding: 10px 20px;
+  background-color: var(--prussian-blue);
+  color: var(--alice-blue);
+  text-decoration: none;
+  border: 2px solid var(--prussian-blue);
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: small;
+  text-transform: uppercase;
+}
+
+.form-cancel:hover {
+  background-color: #204669;
+}
+
 @media screen and (max-width: 825px) {
   .form {
     width: 100%;
