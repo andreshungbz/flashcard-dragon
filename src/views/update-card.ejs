@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/meta') %>
+    <link href="/styles/form.css" rel="stylesheet" />
+    <title>Update Card</title>
+  </head>
+  <body>
+    <div class="app">
+      <%- include('partials/header') %>
+      <main>
+        <form
+          method="POST"
+          action="/card/<%= card.id %>/update"
+          name="update-flashcard"
+          class="form"
+        >
+          <input type="hidden" name="card_set" value="<%= card.set_id %>" />
+          <h2>Update Flashcard</h2>
+          <div class="form-group">
+            <label for="card_question">Question</label>
+            <input
+              type="text"
+              id="card_question"
+              name="card_question"
+              placeholder="Enter the question"
+              value="<%= card.question %>"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="card_answer">Answer</label>
+            <input
+              type="text"
+              id="card_answer"
+              name="card_answer"
+              placeholder="Enter the answer"
+              value="<%= card.answer %>"
+              required
+            />
+          </div>
+          <button type="submit" class="form-submit">Update Card</button>
+        </form>
+      </main>
+      <%- include('partials/footer') %>
+    </div>
+  </body>
+</html>

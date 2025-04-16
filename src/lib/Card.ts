@@ -3,7 +3,9 @@
 
 export interface Card {
   id: string;
-  sequence: number;
+  set_id: string;
   question: string;
   answer: string;
+  created_at: Date | string;
+  updated_at: Date | string;
 }

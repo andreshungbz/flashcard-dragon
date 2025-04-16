@@ -2,7 +2,12 @@
 // controllers for card-route.ts
 
 import { Request, Response } from 'express';
-import { createCard, deleteCard } from '../models/card-model.js';
+import {
+  createCard,
+  deleteCard,
+  readCard,
+  updateCard,
+} from '../models/card-model.js';
 
 import stringConvert from '../utils/string-convert.js';
 
@@ -39,5 +44,41 @@ export const postDeleteCard = async (req: Request, res: Response) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: '500 Internal Server Error' });
+  }
+};
+
+// renders card update page
+export const getUpdateCard = async (req: Request, res: Response) => {
+  try {
+    const uuid = req.params.id;
+    const card = await readCard(uuid);
+    res.render('update-card', { card });
+  } catch (error) {
+    console.error(error);
+    res.status(500).render('error', { message: '500 Internal Server Error' });
+  }
+};
+
+// updates card in database and redirects to set page
+export const postUpdateCard = async (req: Request, res: Response) => {
+  try {
+    const uuid = req.params.id;
+    const setID = req.body.card_set;
+
+    const cardQuestion = stringConvert(req.body.card_question);
+    const cardAnswer = stringConvert(req.body.card_answer);
+
+    // server-side required check
+    if (!cardQuestion || !cardAnswer) {
+      return res.status(400).render('error', {
+        message: 'Required Question/Answer Field Missing',
+      });
+    }
+
+    await updateCard(uuid, cardQuestion, cardAnswer);
+    res.redirect(`/set/${setID}`);
+  } catch (error) {
+    console.error(error);
+    res.status(500).render('error', { message: '500 Internal Server Error' });
   }
 };
