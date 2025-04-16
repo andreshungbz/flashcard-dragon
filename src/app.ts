@@ -9,6 +9,7 @@ import notFound from './middleware/not-found.js';
 
 import mainRoute from './routes/main-route.js';
 import setRoute from './routes/set-route.js';
+import cardRoute from './routes/card-route.js';
 
 import appconfig from './config/settings.js';
 
@@ -28,6 +29,7 @@ app.use(httpLogger);
 // routes
 app.use('/', mainRoute);
 app.use('/set', setRoute);
+app.use('/card', cardRoute);
 
 // handle non-existent routes
 app.use(notFound);

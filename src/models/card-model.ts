@@ -6,6 +6,28 @@ import { Card } from '../lib/Card.js';
 
 // CREATE
 
+export const createCard = async (
+  setID: string,
+  question: string,
+  answer: string
+): Promise<string> => {
+  try {
+    const result = await query(
+      'INSERT INTO card (set_id, question, answer) VALUES ($1, $2, $3) RETURNING *',
+      [setID, question, answer]
+    );
+
+    if (result.rowCount === 0) {
+      throw new Error('[Card Model] Card creation failed');
+    }
+
+    const id = result.rows[0].id;
+    return id;
+  } catch (error) {
+    throw error;
+  }
+};
+
 // READ
 
 export const readCards = async (setID: string): Promise<Card[]> => {
