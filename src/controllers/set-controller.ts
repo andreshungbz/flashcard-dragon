@@ -2,7 +2,12 @@
 // controllers for set-route.ts
 
 import { Request, Response } from 'express';
-import { createSet, readSet, updateSet } from '../models/set-model.js';
+import {
+  createSet,
+  deleteSet,
+  readSet,
+  updateSet,
+} from '../models/set-model.js';
 import stringConvert from '../utils/string-convert.js';
 
 export const getSet = async (req: Request, res: Response) => {
@@ -84,6 +89,17 @@ export const postUpdateSet = async (req: Request, res: Response) => {
 
     await updateSet(uuid, setName, setDesc);
     res.redirect(`/set/${uuid}`);
+  } catch (error) {
+    console.error(error);
+    res.status(500).render('error', { message: '500 Internal Server Error' });
+  }
+};
+
+export const getDeleteSet = async (req: Request, res: Response) => {
+  try {
+    const uuid = req.params.id;
+    await deleteSet(uuid);
+    res.redirect('/sets');
   } catch (error) {
     console.error(error);
     res.status(500).render('error', { message: '500 Internal Server Error' });

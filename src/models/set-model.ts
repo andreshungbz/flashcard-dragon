@@ -102,3 +102,15 @@ export const updateSet = async (
 };
 
 // DELETE
+
+export const deleteSet = async (id: string) => {
+  try {
+    const result = await query('DELETE FROM set WHERE id = $1', [id]);
+
+    if (result.rowCount === 0) {
+      throw new Error('Set with specified ID does not exist.');
+    }
+  } catch (error) {
+    throw error;
+  }
+};

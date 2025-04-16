@@ -5,6 +5,7 @@ import express from 'express';
 
 import {
   getCreateSet,
+  getDeleteSet,
   getSet,
   getUpdateSet,
   postCreateSet,
@@ -17,6 +18,7 @@ setRoute.get('/create', getCreateSet);
 setRoute.post('/create', postCreateSet);
 setRoute.get('/:id/update', getUpdateSet);
 setRoute.post('/:id/update', postUpdateSet);
+setRoute.get('/:id/delete', getDeleteSet);
 setRoute.get('/:id', getSet);
 
 export default setRoute;
