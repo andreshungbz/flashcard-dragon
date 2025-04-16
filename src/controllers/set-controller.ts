@@ -46,6 +46,13 @@ export const postCreateSet = async (req: Request, res: Response) => {
       });
     }
 
+    // server-side set name length check
+    if (setName.length > 100) {
+      return res.status(400).render('error', {
+        message: 'Set Name Too Long',
+      });
+    }
+
     const id = await createSet(setName, setDesc);
     res.redirect(`/set/${id}`);
   } catch (error) {
@@ -78,6 +85,13 @@ export const postUpdateSet = async (req: Request, res: Response) => {
     if (!setName || !setDesc) {
       return res.status(400).render('error', {
         message: 'Required Name/Description Field Missing',
+      });
+    }
+
+    // server-side set name length check
+    if (setName.length > 100) {
+      return res.status(400).render('error', {
+        message: 'Set Name Too Long',
       });
     }
 
