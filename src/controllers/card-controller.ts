@@ -11,6 +11,22 @@ import {
 
 import stringConvert from '../utils/string-convert.js';
 
+// PAGES
+
+// renders card update page
+export const getUpdateCardPage = async (req: Request, res: Response) => {
+  try {
+    const uuid = req.params.id;
+    const card = await readCard(uuid);
+    res.render('update-card', { card });
+  } catch (error) {
+    console.error(error);
+    res.status(500).render('error', { message: '500 Internal Server Error' });
+  }
+};
+
+// OPERATIONS
+
 // creates card and returns it as JSON
 export const postCard = async (req: Request, res: Response) => {
   try {
@@ -35,30 +51,6 @@ export const postCard = async (req: Request, res: Response) => {
   }
 };
 
-// deletes card and returns JSON success
-export const delCard = async (req: Request, res: Response) => {
-  try {
-    const cardUUID = req.params.id;
-    await deleteCard(cardUUID);
-    res.json({ message: 'success' });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: '500 Internal Server Error' });
-  }
-};
-
-// renders card update page
-export const getUpdateCardPage = async (req: Request, res: Response) => {
-  try {
-    const uuid = req.params.id;
-    const card = await readCard(uuid);
-    res.render('update-card', { card });
-  } catch (error) {
-    console.error(error);
-    res.status(500).render('error', { message: '500 Internal Server Error' });
-  }
-};
-
 // updates card in database and redirects to set page
 export const patchCard = async (req: Request, res: Response) => {
   try {
@@ -80,5 +72,17 @@ export const patchCard = async (req: Request, res: Response) => {
   } catch (error) {
     console.error(error);
     res.status(500).render('error', { message: '500 Internal Server Error' });
+  }
+};
+
+// deletes card and returns JSON success
+export const delCard = async (req: Request, res: Response) => {
+  try {
+    const cardUUID = req.params.id;
+    await deleteCard(cardUUID);
+    res.json({ message: 'success' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: '500 Internal Server Error' });
   }
 };

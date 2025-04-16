@@ -13,6 +13,41 @@ import {
   updateSet,
 } from '../models/set-model.js';
 
+// PAGES
+
+// renders create set page
+export const getCreateSetPage = (_req: Request, res: Response) => {
+  res.render('create-set');
+};
+
+// renders the study page of a random set
+export const getRandomSetStudy = async (_req: Request, res: Response) => {
+  try {
+    const randomUUID = await readRandomSet();
+
+    if (!randomUUID) {
+      return res.status(404).render('error', { message: 'No Sets Yet' });
+    }
+
+    res.redirect(`/set/${randomUUID}/study`);
+  } catch (error) {
+    console.error(error);
+    res.status(500).render('error', { message: '500 Internal Server Error' });
+  }
+};
+
+// renders update set page
+export const getUpdateSetPage = async (req: Request, res: Response) => {
+  try {
+    const uuid = req.params.id;
+    const result = await readSet(uuid);
+    res.render('update-set', { set: result.set });
+  } catch (error) {
+    console.error(error);
+    res.status(500).render('error', { message: '500 Internal Server Error' });
+  }
+};
+
 // renders set page
 export const getSet = async (req: Request, res: Response) => {
   try {
@@ -29,10 +64,7 @@ export const getSet = async (req: Request, res: Response) => {
   }
 };
 
-// renders create set page
-export const getCreateSetPage = (_req: Request, res: Response) => {
-  res.render('create-set');
-};
+// OPERATIONS
 
 // creates set in database and redirects to set page
 export const postSet = async (req: Request, res: Response) => {
@@ -56,18 +88,6 @@ export const postSet = async (req: Request, res: Response) => {
 
     const id = await createSet(setName, setDesc);
     res.redirect(`/set/${id}`);
-  } catch (error) {
-    console.error(error);
-    res.status(500).render('error', { message: '500 Internal Server Error' });
-  }
-};
-
-// renders update set page
-export const getUpdateSetPage = async (req: Request, res: Response) => {
-  try {
-    const uuid = req.params.id;
-    const result = await readSet(uuid);
-    res.render('update-set', { set: result.set });
   } catch (error) {
     console.error(error);
     res.status(500).render('error', { message: '500 Internal Server Error' });
@@ -110,22 +130,6 @@ export const delSet = async (req: Request, res: Response) => {
     const uuid = req.params.id;
     await deleteSet(uuid);
     res.redirect('/sets');
-  } catch (error) {
-    console.error(error);
-    res.status(500).render('error', { message: '500 Internal Server Error' });
-  }
-};
-
-// renders the study page of a random set
-export const getRandomSetStudy = async (_req: Request, res: Response) => {
-  try {
-    const randomUUID = await readRandomSet();
-
-    if (!randomUUID) {
-      return res.status(404).render('error', { message: 'No Sets Yet' });
-    }
-
-    res.redirect(`/set/${randomUUID}/study`);
   } catch (error) {
     console.error(error);
     res.status(500).render('error', { message: '500 Internal Server Error' });

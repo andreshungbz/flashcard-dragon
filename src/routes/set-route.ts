@@ -19,12 +19,11 @@ const setRoute = express.Router();
 setRoute.get('/create', getCreateSetPage);
 setRoute.get('/random', getRandomSetStudy);
 setRoute.get('/update/:id', getUpdateSetPage);
+setRoute.get('/:id', getSet);
 
 // operations
 setRoute.post('/create', postSet);
 setRoute.patch('/:id', patchSet);
 setRoute.delete('/:id', delSet);
-
-setRoute.get('/:id', getSet);
 
 export default setRoute;
