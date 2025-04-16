@@ -3,6 +3,7 @@
 
 import { Request, Response } from 'express';
 import { createSet, readSet } from '../models/set-model.js';
+import stringConvert from '../utils/string-convert.js';
 
 export const getSet = async (req: Request, res: Response) => {
   try {
@@ -40,13 +41,8 @@ export const getCreateSet = (_req: Request, res: Response) => {
 
 export const postCreateSet = async (req: Request, res: Response) => {
   try {
-    const { set_name, set_desc } = req.body;
-    let setName = set_name ? String(set_name) : '';
-    let setDesc = set_desc ? String(set_desc) : '';
-
-    // trim values
-    setName = set_name.trim();
-    setDesc = set_desc.trim();
+    const setName = stringConvert(req.body.set_name);
+    const setDesc = stringConvert(req.body.set_desc);
 
     if (!setName || !setDesc) {
       return res
