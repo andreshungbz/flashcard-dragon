@@ -16,6 +16,10 @@ export const getSets = async (_req: Request, res: Response) => {
   try {
     const sets = await readAllSets();
 
+    if (sets.length === 0) {
+      return res.render('error', { message: 'No Flashcard Sets Yet!' });
+    }
+
     // convert date properties to strings
     sets.forEach((set) => {
       datestringConvert(set);
