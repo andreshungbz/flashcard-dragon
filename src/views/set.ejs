@@ -3,6 +3,7 @@
   <head>
     <%- include('partials/meta') %>
     <link href="/styles/grids/set.css" rel="stylesheet" />
+    <link href="/styles/form.css" rel="stylesheet" />
     <title><%= result.set.name %></title>
   </head>
   <body>
@@ -26,26 +27,10 @@
             >Study</a
           >
         </section>
-        <section class="set-cards">
-          <% result.cards.forEach(card => { %>
-          <div class="set-card" data-id="<%= card.id %>">
-            <div>
-              <h3><%= card.question %></h3>
-              <p><%= card.answer %></p>
-            </div>
-            <div class="set-card-options">
-              <a class="card-option-update" href="/card/<%= card.id %>/update"
-                >Update</a
-              >
-              <button class="card-option-delete">Delete</button>
-            </div>
-          </div>
-          <% }) %>
-        </section>
-        <section class="new-card-form">
+        <section class="form-wrapper">
           <form
             name="add-flashcard"
-            class="set-card-form"
+            class="form"
             data-id="<%= result.set.id %>"
           >
             <h2>Add a Flashcard</h2>
@@ -71,6 +56,22 @@
             </div>
             <button type="button" class="form-submit">Add Card</button>
           </form>
+        </section>
+        <section class="set-cards">
+          <% result.cards.forEach(card => { %>
+          <div class="set-card" data-id="<%= card.id %>">
+            <div>
+              <h3><%= card.question %></h3>
+              <p><%= card.answer %></p>
+            </div>
+            <div class="set-card-options">
+              <a class="card-option-update" href="/card/<%= card.id %>/update"
+                >Update</a
+              >
+              <button class="card-option-delete">Delete</button>
+            </div>
+          </div>
+          <% }) %>
         </section>
       </main>
       <%- include('partials/footer') %>

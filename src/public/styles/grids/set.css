@@ -167,55 +167,6 @@
 
 /* form */
 
-.new-card-form {
-  width: 80%;
-  max-width: 1200px;
-}
-
-.set-card-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: var(--alice-blue);
-  border: 2px solid var(--prussian-blue);
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.form-group label {
-  font-weight: bold;
-  color: var(--prussian-blue);
-}
-
-.form-group input {
-  padding: 10px;
-  border: 2px solid var(--prussian-blue);
-  font-size: medium;
-}
-
-.form-submit {
-  padding: 10px 20px;
-  transition: background-color 0.3s ease;
-  background-color: var(--selective-yellow);
-  cursor: pointer;
-  border: 2px solid var(--prussian-blue);
-  font-weight: bold;
-  color: var(--prussian-blue);
-  text-transform: uppercase;
-}
-
-.form-submit:hover {
-  background-color: #ffbf11;
-}
-
-@media screen and (max-width: 825px) {
-  .new-card-form {
-    width: 100%;
-  }
+.form-wrapper {
+  width: 100%;
 }
