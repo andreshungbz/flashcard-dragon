@@ -82,4 +82,23 @@ export const readSet = async (
 
 // UPDATE
 
+export const updateSet = async (
+  id: string,
+  newName: string,
+  newDesc: string
+) => {
+  try {
+    const result = await query(
+      'UPDATE set SET name = $1, description = $2 WHERE id = $3',
+      [newName, newDesc, id]
+    );
+
+    if (result.rowCount === 0) {
+      throw new Error('Set with specified ID does not exist.');
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
 // DELETE

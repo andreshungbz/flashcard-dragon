@@ -2,7 +2,7 @@
 // controllers for set-route.ts
 
 import { Request, Response } from 'express';
-import { createSet, readSet } from '../models/set-model.js';
+import { createSet, readSet, updateSet } from '../models/set-model.js';
 import stringConvert from '../utils/string-convert.js';
 
 export const getSet = async (req: Request, res: Response) => {
@@ -52,6 +52,38 @@ export const postCreateSet = async (req: Request, res: Response) => {
 
     const id = await createSet(setName, setDesc);
     res.redirect(`/set/${id}`);
+  } catch (error) {
+    console.error(error);
+    res.status(500).render('error', { message: '500 Internal Server Error' });
+  }
+};
+
+export const getUpdateSet = async (req: Request, res: Response) => {
+  try {
+    const uuid = req.params.id;
+    const result = await readSet(uuid);
+    res.render('update-set', { set: result.set });
+  } catch (error) {
+    console.error(error);
+    res.status(500).render('error', { message: '500 Internal Server Error' });
+  }
+};
+
+export const postUpdateSet = async (req: Request, res: Response) => {
+  try {
+    const uuid = req.params.id;
+
+    const setName = stringConvert(req.body.set_name);
+    const setDesc = stringConvert(req.body.set_desc);
+
+    if (!setName || !setDesc) {
+      return res
+        .status(400)
+        .render('error', { message: 'Required Field Missing' });
+    }
+
+    await updateSet(uuid, setName, setDesc);
+    res.redirect(`/set/${uuid}`);
   } catch (error) {
     console.error(error);
     res.status(500).render('error', { message: '500 Internal Server Error' });

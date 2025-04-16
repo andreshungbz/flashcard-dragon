@@ -6,13 +6,17 @@ import express from 'express';
 import {
   getCreateSet,
   getSet,
+  getUpdateSet,
   postCreateSet,
+  postUpdateSet,
 } from '../controllers/set-controller.js';
 
 const setRoute = express.Router();
 
 setRoute.get('/create', getCreateSet);
 setRoute.post('/create', postCreateSet);
+setRoute.get('/:id/update', getUpdateSet);
+setRoute.post('/:id/update', postUpdateSet);
 setRoute.get('/:id', getSet);
 
 export default setRoute;
