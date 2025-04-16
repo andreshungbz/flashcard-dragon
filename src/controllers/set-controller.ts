@@ -30,6 +30,7 @@ export const getSet = async (req: Request, res: Response) => {
     res.render('set', { result });
   } catch (error) {
     console.error(error);
+    res.status(500).render('error', { message: '500 Internal Server Error' });
   }
 };
 
@@ -40,9 +41,21 @@ export const getCreateSet = (_req: Request, res: Response) => {
 export const postCreateSet = async (req: Request, res: Response) => {
   try {
     const { set_name, set_desc } = req.body;
-    const id = await createSet(set_name, set_desc);
+    let setName = set_name ? String(set_name) : '';
+    let setDesc = set_desc ? String(set_desc) : '';
+
+    // trim values
+    setName = set_name.trim();
+    setDesc = set_desc.trim();
+
+    if (!setName || !setDesc) {
+      res.status(400).render('error', { message: 'Required Field Missing' });
+    }
+
+    const id = await createSet(setName, setDesc);
     res.redirect(`/set/${id}`);
   } catch (error) {
     console.error(error);
+    res.status(500).render('error', { message: '500 Internal Server Error' });
   }
 };

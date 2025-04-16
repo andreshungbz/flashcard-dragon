@@ -27,5 +27,6 @@ export const getSets = async (_req: Request, res: Response) => {
     res.render('sets', { sets });
   } catch (error) {
     console.error(error);
+    res.status(500).render('error', { message: '500 Internal Server Error' });
   }
 };
