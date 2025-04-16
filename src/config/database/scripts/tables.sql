@@ -16,9 +16,10 @@ CREATE TABLE set (
 CREATE TABLE card (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     set_id UUID REFERENCES set(id) ON DELETE CASCADE,
-    sequence SERIAL,
     question TEXT NOT NULL,
-    answer TEXT NOT NULL
+    answer TEXT NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
 \echo '\033[1;34m[PSQL] Inserting Example Data\033[0m'

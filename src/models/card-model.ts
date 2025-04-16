@@ -11,7 +11,7 @@ import { Card } from '../lib/Card.js';
 export const readCards = async (setID: string): Promise<Card[]> => {
   try {
     const result = await query(
-      'SELECT * FROM card WHERE set_id = $1 ORDER BY sequence ASC',
+      'SELECT * FROM card WHERE set_id = $1 ORDER BY updated_at DESC',
       [setID]
     );
 
