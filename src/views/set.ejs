@@ -28,7 +28,7 @@
         </section>
         <section class="set-cards">
           <% result.cards.forEach(card => { %>
-          <div class="set-card">
+          <div class="set-card" data-id="<%= card.id %>">
             <div>
               <h3><%= card.question %></h3>
               <p><%= card.answer %></p>
@@ -37,16 +37,18 @@
               <a class="card-option-update" href="/card/<%= card.id %>/update"
                 >Update</a
               >
-              <a class="card-option-delete" href="/card/<%= card.id %>/delete"
-                >Delete</a
-              >
+              <button class="card-option-delete">Delete</button>
             </div>
           </div>
           <% }) %>
         </section>
         <section class="new-card-form">
-          <form class="set-card-form">
-            <input type="hidden" name="set_id" value="<%= result.set.id %>" />
+          <form
+            name="add-flashcard"
+            class="set-card-form"
+            data-id="<%= result.set.id %>"
+          >
+            <h2>Add a Flashcard</h2>
             <div class="form-group">
               <label for="question">Question</label>
               <input
