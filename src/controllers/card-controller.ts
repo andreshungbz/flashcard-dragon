@@ -12,7 +12,7 @@ import {
 import stringConvert from '../utils/string-convert.js';
 
 // creates card and returns it as JSON
-export const postCreateCard = async (req: Request, res: Response) => {
+export const postCard = async (req: Request, res: Response) => {
   try {
     const setUUID = stringConvert(req.body.set_id);
     const cardQuestion = stringConvert(req.body.card_question);
@@ -36,7 +36,7 @@ export const postCreateCard = async (req: Request, res: Response) => {
 };
 
 // deletes card and returns JSON success
-export const postDeleteCard = async (req: Request, res: Response) => {
+export const delCard = async (req: Request, res: Response) => {
   try {
     const cardUUID = req.params.id;
     await deleteCard(cardUUID);
@@ -48,7 +48,7 @@ export const postDeleteCard = async (req: Request, res: Response) => {
 };
 
 // renders card update page
-export const getUpdateCard = async (req: Request, res: Response) => {
+export const getUpdateCardPage = async (req: Request, res: Response) => {
   try {
     const uuid = req.params.id;
     const card = await readCard(uuid);
@@ -60,7 +60,7 @@ export const getUpdateCard = async (req: Request, res: Response) => {
 };
 
 // updates card in database and redirects to set page
-export const postUpdateCard = async (req: Request, res: Response) => {
+export const patchCard = async (req: Request, res: Response) => {
   try {
     const uuid = req.params.id;
     const setID = req.body.card_set;

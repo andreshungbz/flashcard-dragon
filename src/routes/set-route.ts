@@ -4,23 +4,27 @@
 import express from 'express';
 
 import {
-  getCreateSet,
-  getDeleteSet,
-  getRandomSet,
+  getCreateSetPage,
+  delSet,
+  getRandomSetStudy,
   getSet,
-  getUpdateSet,
-  postCreateSet,
-  postUpdateSet,
+  getUpdateSetPage,
+  postSet,
+  patchSet,
 } from '../controllers/set-controller.js';
 
 const setRoute = express.Router();
 
-setRoute.get('/random', getRandomSet);
-setRoute.get('/create', getCreateSet);
-setRoute.post('/create', postCreateSet);
-setRoute.get('/:id/update', getUpdateSet);
-setRoute.post('/:id/update', postUpdateSet);
-setRoute.get('/:id/delete', getDeleteSet);
+// pages
+setRoute.get('/create', getCreateSetPage);
+setRoute.get('/random', getRandomSetStudy);
+setRoute.get('/update/:id', getUpdateSetPage);
+
+// operations
+setRoute.post('/create', postSet);
+setRoute.patch('/:id', patchSet);
+setRoute.delete('/:id', delSet);
+
 setRoute.get('/:id', getSet);
 
 export default setRoute;

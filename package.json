@@ -28,10 +28,12 @@
     "dotenv": "^16.5.0",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
+    "method-override": "^3.0.0",
     "pg": "^8.14.1"
   },
   "devDependencies": {
     "@types/express": "^5.0.1",
+    "@types/method-override": "^3.0.0",
     "@types/node": "^22.14.1",
     "@types/pg": "^8.11.12",
     "concurrently": "^9.1.2",

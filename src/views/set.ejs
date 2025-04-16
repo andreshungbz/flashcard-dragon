@@ -19,15 +19,20 @@
             <span class="date">Created: <%= result.set.created_at %></span>
             <span class="date">Last Updated: <%= result.set.updated_at %></span>
           </div>
-          <a class="set-grid-update" href="/set/<%= result.set.id %>/update"
+          <a class="set-grid-update" href="/set/update/<%= result.set.id %>"
             >Update</a
           >
-          <a class="set-grid-delete" href="/set/<%= result.set.id %>/delete"
-            >Delete</a
-          >
+          <button form="delete-form" type="submit" class="set-grid-delete">
+            Delete
+          </button>
           <a class="set-grid-study" href="/set/<%= result.set.id %>/study"
             >Study</a
           >
+          <form
+            id="delete-form"
+            action="/set/<%= result.set.id %>?_method=DELETE"
+            method="POST"
+          ></form>
         </section>
         <section class="form-wrapper">
           <form
@@ -67,7 +72,7 @@
               <p><%= card.answer %></p>
             </div>
             <div class="set-card-options">
-              <a class="card-option-update" href="/card/<%= card.id %>/update"
+              <a class="card-option-update" href="/card/update/<%= card.id %>"
                 >Update</a
               >
               <button class="card-option-delete">Delete</button>

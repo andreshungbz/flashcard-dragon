@@ -71,6 +71,14 @@
   background-color: #204669;
 }
 
+.inline-form {
+  display: contents;
+}
+
+#delete-form {
+  display: none;
+}
+
 @media screen and (max-width: 825px) {
   .form {
     width: 100%;

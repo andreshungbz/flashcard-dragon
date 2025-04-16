@@ -18,7 +18,7 @@ const renderCard = (card) => {
       <p>${card.answer}</p>
     </div>
     <div class="set-card-options">
-      <a class="card-option-update" href="/card/${card.id}/update">Update</a>
+      <a class="card-option-update" href="/card/update/${card.id}">Update</a>
       <button class="card-option-delete">Delete</button>
     </div>
   `;

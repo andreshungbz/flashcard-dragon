@@ -30,12 +30,12 @@ export const getSet = async (req: Request, res: Response) => {
 };
 
 // renders create set page
-export const getCreateSet = (_req: Request, res: Response) => {
+export const getCreateSetPage = (_req: Request, res: Response) => {
   res.render('create-set');
 };
 
 // creates set in database and redirects to set page
-export const postCreateSet = async (req: Request, res: Response) => {
+export const postSet = async (req: Request, res: Response) => {
   try {
     const setName = stringConvert(req.body.set_name);
     const setDesc = stringConvert(req.body.set_desc);
@@ -63,7 +63,7 @@ export const postCreateSet = async (req: Request, res: Response) => {
 };
 
 // renders update set page
-export const getUpdateSet = async (req: Request, res: Response) => {
+export const getUpdateSetPage = async (req: Request, res: Response) => {
   try {
     const uuid = req.params.id;
     const result = await readSet(uuid);
@@ -75,7 +75,7 @@ export const getUpdateSet = async (req: Request, res: Response) => {
 };
 
 // updates set in database and redirects to set page
-export const postUpdateSet = async (req: Request, res: Response) => {
+export const patchSet = async (req: Request, res: Response) => {
   try {
     const uuid = req.params.id;
 
@@ -105,7 +105,7 @@ export const postUpdateSet = async (req: Request, res: Response) => {
 };
 
 // deletes set from database and redirects to sets page
-export const getDeleteSet = async (req: Request, res: Response) => {
+export const delSet = async (req: Request, res: Response) => {
   try {
     const uuid = req.params.id;
     await deleteSet(uuid);
@@ -117,7 +117,7 @@ export const getDeleteSet = async (req: Request, res: Response) => {
 };
 
 // renders the study page of a random set
-export const getRandomSet = async (_req: Request, res: Response) => {
+export const getRandomSetStudy = async (_req: Request, res: Response) => {
   try {
     const randomUUID = await readRandomSet();
 
