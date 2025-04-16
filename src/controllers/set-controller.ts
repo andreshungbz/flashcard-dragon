@@ -29,7 +29,7 @@ export const getRandomSetStudy = async (_req: Request, res: Response) => {
       return res.status(404).render('error', { message: 'No Sets Yet' });
     }
 
-    res.redirect(`/set/${randomUUID}/study`);
+    res.redirect(`/set/study/${randomUUID}`);
   } catch (error) {
     console.error(error);
     res.status(500).render('error', { message: '500 Internal Server Error' });
