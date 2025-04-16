@@ -8,6 +8,27 @@ import { readCards } from './card-model.js';
 
 // CREATE
 
+export const createSet = async (
+  name: string,
+  description: string
+): Promise<string> => {
+  try {
+    const result = await query(
+      'INSERT INTO set (name, description) VALUES ($1, $2) RETURNING *',
+      [name, description]
+    );
+
+    if (result.rowCount === 0) {
+      throw new Error('Flashcard set failed to be created.');
+    }
+
+    const id = result.rows[0].id;
+    return id;
+  } catch (error) {
+    throw error;
+  }
+};
+
 // READ
 
 export const readAllSets = async (): Promise<Set[]> => {

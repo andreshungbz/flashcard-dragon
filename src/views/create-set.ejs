@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/meta') %>
+    <link href="/styles/form.css" rel="stylesheet" />
+    <title>Create New Set</title>
+  </head>
+  <body>
+    <div class="app">
+      <%- include('partials/header') %>
+      <main>
+        <form
+          method="POST"
+          action="/set/create"
+          name="add-flashcard"
+          class="form"
+        >
+          <h2>Create New Flashcard Set</h2>
+          <div class="form-group">
+            <label for="set_name">Set Name</label>
+            <input
+              type="text"
+              id="set_name"
+              name="set_name"
+              placeholder="Name of the set"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="set_desc">Answer</label>
+            <input
+              type="text"
+              id="set_desc"
+              name="set_desc"
+              placeholder="What is the flashcard set about?"
+              required
+            />
+          </div>
+          <button type="submit" class="form-submit">Add Set</button>
+        </form>
+      </main>
+      <%- include('partials/footer') %>
+    </div>
+  </body>
+</html>

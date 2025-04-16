@@ -2,7 +2,7 @@
 // controllers for set-route.ts
 
 import { Request, Response } from 'express';
-import { readSet } from '../models/set-model.js';
+import { createSet, readSet } from '../models/set-model.js';
 
 export const getSet = async (req: Request, res: Response) => {
   try {
@@ -28,6 +28,20 @@ export const getSet = async (req: Request, res: Response) => {
     });
 
     res.render('set', { result });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getCreateSet = (_req: Request, res: Response) => {
+  res.render('create-set');
+};
+
+export const postCreateSet = async (req: Request, res: Response) => {
+  try {
+    const { set_name, set_desc } = req.body;
+    const id = await createSet(set_name, set_desc);
+    res.redirect(`/set/${id}`);
   } catch (error) {
     console.error(error);
   }
