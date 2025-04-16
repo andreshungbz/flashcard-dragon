@@ -2,7 +2,7 @@
 // controllers for card-route.ts
 
 import { Request, Response } from 'express';
-import { createCard } from '../models/card-model.js';
+import { createCard, deleteCard } from '../models/card-model.js';
 
 import stringConvert from '../utils/string-convert.js';
 
@@ -24,6 +24,18 @@ export const postCreateCard = async (req: Request, res: Response) => {
 
     const cardUUID = await createCard(setUUID, cardQuestion, cardAnswer);
     res.json({ id: cardUUID, question: cardQuestion, answer: cardAnswer });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: '500 Internal Server Error' });
+  }
+};
+
+// deletes card and returns JSON success
+export const postDeleteCard = async (req: Request, res: Response) => {
+  try {
+    const cardUUID = req.params.id;
+    await deleteCard(cardUUID);
+    res.json({ message: 'success' });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: '500 Internal Server Error' });

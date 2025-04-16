@@ -51,6 +51,10 @@ const addCard = async (event) => {
   } catch (error) {
     console.error(error);
   }
+
+  // reset form values
+  inputQuestion.value = '';
+  inputAnswer.value = '';
 };
 
 form.addEventListener('submit', addCard);

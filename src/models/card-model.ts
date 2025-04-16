@@ -50,6 +50,16 @@ export const readCards = async (setID: string): Promise<Card[]> => {
   }
 };
 
-// UPDATE
-
 // DELETE
+
+export const deleteCard = async (id: string) => {
+  try {
+    const result = await query('DELETE FROM card WHERE id = $1', [id]);
+
+    if (result.rowCount === 0) {
+      throw new Error('[Card Model] Card deletion failed');
+    }
+  } catch (error) {
+    throw error;
+  }
+};
