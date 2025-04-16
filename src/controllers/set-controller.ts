@@ -49,7 +49,9 @@ export const postCreateSet = async (req: Request, res: Response) => {
     setDesc = set_desc.trim();
 
     if (!setName || !setDesc) {
-      res.status(400).render('error', { message: 'Required Field Missing' });
+      return res
+        .status(400)
+        .render('error', { message: 'Required Field Missing' });
     }
 
     const id = await createSet(setName, setDesc);
