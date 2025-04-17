@@ -18,13 +18,13 @@ Flashcard Dragon is a personal, self-hosted flashcard creator service and study 
 
 ## Running The Application
 
-These instructions assume you are using a UNIX-like operating system (Linux, macOS, etc.). If you are using Windows, you may need to adjust the commands accordingly.
+These instructions assume you use a UNIX-like operating system (Linux, macOS, etc.). If you are using Windows, you may need to adjust the commands accordingly.
 
 ### Prerequisites
 
 - `git` command line tool
 - Latest LTS version of [Node.js](https://nodejs.org/en)
-- Locally runnning [PostgreSQL](https://www.postgresql.org/) server
+- Locally running [PostgreSQL](https://www.postgresql.org/) server
 
   - `postgres` user with superuser privileges
 
@@ -45,7 +45,7 @@ cd flashcard-dragon
 3. Create a copy of `.env.example` with the name `.env`.
 
 > [!WARNING]
-> This step uses the default provided credentials and settings and are provided for development and testing purposes only.
+> This step uses the default provided credentials and settings and is provided for development and testing purposes only.
 
 ```
 cp .env.example .env
@@ -60,10 +60,10 @@ npm install
 ### Database Setup
 
 > [!WARNING]
-> These steps set up a database with predetermined names and credentials, and also inserts example data.
+> These steps set up a database with predetermined names and credentials and insert example data.
 
 > [!NOTE]
-> Depending your host-based configuration settings on PostgreSQL, you may be asked for a password. The default password for `fcd_user` is `swordfish`. The script also assumes a `postgres` user with superuser privileges is accessible. It can be changed in the `package.json` file to any user with the CREATEROLE and CREATEDB attributes.
+> Depending on your host-based configuration settings on PostgreSQL, you may be asked for a password. The default password for `fcd_user` is `swordfish`. The script also assumes a `postgres` user with superuser privileges is accessible. Users can change it in the `package.json` file with the CREATEROLE and CREATEDB attributes.
 
 1. Run the following script:
 
@@ -99,4 +99,4 @@ npm test
 
 ## Attributions
 
-Favicon dragon icon is copyright 2020 Twitter, Inc and other contributors. The graphics are licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/). No modifications were made to the original image.
+Favicon dragon icon is copyright 2020 Twitter, Inc., and other contributors. The graphics are licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/). No modifications were made to the original image.
