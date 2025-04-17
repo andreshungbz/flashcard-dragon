@@ -48,6 +48,26 @@ export const getUpdateSetPage = async (req: Request, res: Response) => {
   }
 };
 
+// renders set study page
+export const getSetStudyPage = async (req: Request, res: Response) => {
+  try {
+    const uuid = req.params.id;
+    const result = await readSet(uuid);
+
+    if (result.cards.length === 0) {
+      return res.render('error', { message: 'No Cards In Set Yet!' });
+    }
+
+    // convert date properties to strings
+    datestringConvert(result.set);
+
+    res.render('set-study', { set: result.set, max: result.cards.length });
+  } catch (error) {
+    console.error(error);
+    res.status(500).render('error', { message: '500 Internal Server Error' });
+  }
+};
+
 // renders set page
 export const getSet = async (req: Request, res: Response) => {
   try {

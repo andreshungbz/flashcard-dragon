@@ -11,6 +11,7 @@ import {
   getUpdateSetPage,
   postSet,
   patchSet,
+  getSetStudyPage,
 } from '../controllers/set-controller.js';
 
 const setRoute = express.Router();
@@ -19,6 +20,7 @@ const setRoute = express.Router();
 setRoute.get('/create', getCreateSetPage);
 setRoute.get('/random', getRandomSetStudy);
 setRoute.get('/update/:id', getUpdateSetPage);
+setRoute.get('/study/:id', getSetStudyPage);
 setRoute.get('/:id', getSet);
 
 // operations

@@ -1,0 +1,81 @@
+/* colors */
+/* https://coolors.co/13293d-006494-247ba0-1b98e0-e8f1f2 */
+:root {
+  --prussian-blue: #13293d;
+  --lapis-lazuli: #006494;
+  --cerulean: #247ba0;
+  --celestial-blue: #1b98e0;
+  --alice-blue: #e8f1f2;
+  --selective-yellow: #f5b408;
+}
+
+.name {
+  text-align: center;
+}
+
+.date {
+  margin-top: 5px;
+  font-size: small;
+  color: var(--cerulean);
+  text-align: center;
+}
+
+.question {
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+.edit-set {
+  margin-top: 10px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  text-decoration: none;
+  background-color: var(--selective-yellow);
+  color: var(--prussian-blue);
+  border: 2px solid var(--prussian-blue);
+  padding: 5px;
+  text-transform: uppercase;
+  font-size: small;
+  font-weight: bold;
+}
+
+.edit-set:hover {
+  background-color: #ffbf11;
+}
+
+#card-count,
+#previous-button,
+#next-button,
+#shuffle-button {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: large;
+}
+
+#previous-button:hover,
+#next-button:hover {
+  background-color: var(--selective-yellow);
+}
+
+#previous-button:active,
+#next-button:active {
+  background-color: var(--selective-yellow);
+}
+
+.enabled {
+  background-color: var(--selective-yellow);
+}
+
+@media screen and (max-width: 825px) {
+  .question {
+    font-size: x-large;
+  }
+
+  #card-count,
+  #previous-button,
+  #next-button,
+  #shuffle-button {
+    font-size: medium;
+  }
+}

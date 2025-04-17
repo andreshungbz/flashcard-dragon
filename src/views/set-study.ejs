@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/meta') %>
+    <link href="/styles/grids/study.css" rel="stylesheet" />
+    <link href="/styles/study.css" rel="stylesheet" />
+    <script src="/scripts/study.js" defer></script>
+    <title><%= set.name %></title>
+  </head>
+  <body>
+    <div class="app">
+      <%- include('partials/header') %>
+      <main>
+        <section class="study-grid">
+          <section class="study-grid-flashcard">
+            <span id="card-value" class="question">Loading...</span>
+          </section>
+          <section class="study-grid-controls">
+            <button id="card-count">
+              <span>
+                <span id="current-card">1</span> /
+                <span id="max-card"><%= max %></span>
+              </span>
+            </button>
+            <button id="previous-button" type="button">Previous</button>
+            <button id="next-button" type="button">Next</button>
+            <button type="button" id="shuffle-button">Shuffle</button>
+          </section>
+          <section class="study-grid-description">
+            <h2 class="name"><%= set.name %></h2>
+            <span class="date">Created: <%= set.created_at %></span>
+            <span class="date">Last Updated: <%= set.updated_at %></span>
+            <a class="edit-set" href="/set/<%= set.id %>">Edit Set</a>
+          </section>
+        </section>
+      </main>
+      <%- include('partials/footer') %>
+    </div>
+  </body>
+</html>
