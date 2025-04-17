@@ -7,6 +7,8 @@
   --celestial-blue: #1b98e0;
   --alice-blue: #e8f1f2;
   --selective-yellow: #f5b408;
+  --selective-yellow-lighter: #ffbf11;
+  --delete-red: #f58a08;
 }
 
 .name {
@@ -41,7 +43,7 @@
 }
 
 .edit-set:hover {
-  background-color: #ffbf11;
+  background-color: var(--selective-yellow-lighter);
 }
 
 #card-count,
