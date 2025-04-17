@@ -1,22 +1,12 @@
-/* colors */
-/* https://coolors.co/13293d-006494-247ba0-1b98e0-e8f1f2 */
-:root {
-  --prussian-blue: #13293d;
-  --lapis-lazuli: #006494;
-  --cerulean: #247ba0;
-  --celestial-blue: #1b98e0;
-  --alice-blue: #e8f1f2;
-  --selective-yellow: #f5b408;
-  --selective-yellow-lighter: #ffbf11;
-  --delete-red: #f58a08;
-}
+/* form.css */
+/* styles for create and update forms */
 
 .form {
-  width: 80%;
-  max-width: 1200px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: 80%;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
   background-color: var(--alice-blue);
@@ -58,14 +48,14 @@
 .form-cancel {
   display: block;
   padding: 10px 20px;
-  background-color: var(--prussian-blue);
-  color: var(--alice-blue);
-  text-decoration: none;
-  border: 2px solid var(--prussian-blue);
-  font-weight: bold;
-  text-align: center;
   transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: var(--prussian-blue);
+  border: 2px solid var(--prussian-blue);
   font-size: small;
+  font-weight: bold;
+  color: var(--alice-blue);
+  text-align: center;
+  text-decoration: none;
   text-transform: uppercase;
 }
 
@@ -80,6 +70,8 @@
 #delete-form {
   display: none;
 }
+
+/* responsive styling */
 
 @media screen and (max-width: 825px) {
   .form {

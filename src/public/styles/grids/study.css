@@ -1,21 +1,11 @@
-/* colors */
-/* https://coolors.co/13293d-006494-247ba0-1b98e0-e8f1f2 */
-:root {
-  --prussian-blue: #13293d;
-  --lapis-lazuli: #006494;
-  --cerulean: #247ba0;
-  --celestial-blue: #1b98e0;
-  --alice-blue: #e8f1f2;
-  --selective-yellow: #f5b408;
-  --selective-yellow-lighter: #ffbf11;
-  --delete-red: #f58a08;
-}
+/* study.css */
+/* styles for study page grid */
 
 .study-grid {
   display: grid;
+  gap: 10px;
   grid-template-rows: repeat(6, 1fr);
   grid-template-columns: repeat(7, 1fr);
-  gap: 10px;
   width: 80%;
   max-width: 1200px;
 }
@@ -30,35 +20,37 @@
 
 .study-grid-flashcard {
   grid-area: 1 / 1 / 6 / 6;
-  min-height: 450px;
   overflow: scroll;
+  min-height: 450px;
   background-color: var(--alice-blue);
   border: 2px solid var(--prussian-blue);
 }
 
 .study-grid-controls {
-  grid-area: 6 / 1 / 7 / 6;
   flex-direction: row;
-  gap: 10px;
-  padding: 0;
   align-items: stretch;
+  gap: 10px;
+  grid-area: 6 / 1 / 7 / 6;
+  padding: 0;
 }
 
 .study-grid-description {
-  border: 2px solid var(--prussian-blue);
-  background-color: var(--alice-blue);
   grid-area: 1 / 6 / 7 / 8;
+  background-color: var(--alice-blue);
+  border: 2px solid var(--prussian-blue);
 }
 
 .study-grid-controls > * {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex: 1 1 0;
   padding: 10px;
   background-color: var(--alice-blue);
   border: 2px solid var(--prussian-blue);
-  flex: 1 1 0;
 }
+
+/* responsive styling */
 
 @media screen and (max-width: 825px) {
   .study-grid {

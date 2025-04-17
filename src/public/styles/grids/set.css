@@ -1,15 +1,5 @@
-/* colors */
-/* https://coolors.co/13293d-006494-247ba0-1b98e0-e8f1f2 */
-:root {
-  --prussian-blue: #13293d;
-  --lapis-lazuli: #006494;
-  --cerulean: #247ba0;
-  --celestial-blue: #1b98e0;
-  --alice-blue: #e8f1f2;
-  --selective-yellow: #f5b408;
-  --selective-yellow-lighter: #ffbf11;
-  --delete-red: #f58a08;
-}
+/* set.css */
+/* styles for set page grid */
 
 .set-grid {
   display: grid;
@@ -82,6 +72,8 @@
   font-size: small;
   color: var(--cerulean);
 }
+
+/* responsive styling */
 
 @media screen and (max-width: 825px) {
   .set-grid {
@@ -160,6 +152,8 @@
 .card-option-delete:hover {
   background-color: var(--delete-red);
 }
+
+/* responsive styling */
 
 @media screen and (max-width: 825px) {
   .set-cards {
