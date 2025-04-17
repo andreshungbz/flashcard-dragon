@@ -55,11 +55,6 @@
   font-size: large;
 }
 
-#previous-button:hover,
-#next-button:hover {
-  background-color: var(--selective-yellow);
-}
-
 #previous-button:active,
 #next-button:active {
   background-color: var(--selective-yellow);
@@ -67,6 +62,68 @@
 
 .enabled {
   background-color: var(--selective-yellow);
+}
+
+#previous-button.disabled,
+#next-button.disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.normal {
+  font-weight: normal;
+  font-size: x-large;
+}
+
+/* animation */
+
+#flashcard {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+/* flip */
+
+.flip {
+  animation: flipCard 0.4s ease;
+}
+
+@keyframes flipCard {
+  0% {
+    transform: rotateX(0);
+    opacity: 1;
+  }
+  50% {
+    transform: rotateX(90deg);
+    opacity: 0;
+  }
+  100% {
+    transform: rotateX(0);
+    opacity: 1;
+  }
+}
+
+/* fade */
+
+.switch {
+  animation: switchCard 0.4s ease;
+}
+
+@keyframes switchCard {
+  0% {
+    transform: rotateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: rotateY(90deg);
+    opacity: 0;
+  }
+  100% {
+    transform: rotateY(0);
+    opacity: 1;
+  }
 }
 
 @media screen and (max-width: 825px) {
@@ -78,6 +135,6 @@
   #previous-button,
   #next-button,
   #shuffle-button {
-    font-size: medium;
+    font-size: small;
   }
 }

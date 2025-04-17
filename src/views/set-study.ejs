@@ -10,10 +10,10 @@
   <body>
     <div class="app">
       <%- include('partials/header') %>
-      <main>
+      <main data-id="<%= set.id %>">
         <section class="study-grid">
-          <section class="study-grid-flashcard">
-            <span id="card-value" class="question">Loading...</span>
+          <section id="flashcard" class="study-grid-flashcard">
+            <span id="flashcard-value" class="question"></span>
           </section>
           <section class="study-grid-controls">
             <button id="card-count">

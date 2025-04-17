@@ -6,6 +6,7 @@ import {
   createCard,
   deleteCard,
   readCard,
+  readCards,
   updateCard,
 } from '../models/card-model.js';
 
@@ -81,6 +82,19 @@ export const delCard = async (req: Request, res: Response) => {
     const cardUUID = req.params.id;
     await deleteCard(cardUUID);
     res.json({ message: 'success' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: '500 Internal Server Error' });
+  }
+};
+
+// JSON ROUTE
+
+export const getCardsJSON = async (req: Request, res: Response) => {
+  try {
+    const setUUID = req.params.setid;
+    const cards = await readCards(setUUID);
+    res.json(cards);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: '500 Internal Server Error' });

@@ -7,6 +7,7 @@ import {
   postCard,
   delCard,
   patchCard,
+  getCardsJSON,
 } from '../controllers/card-controller.js';
 
 const cardRoute = express.Router();
@@ -18,5 +19,8 @@ cardRoute.get('/update/:id', getUpdateCardPage);
 cardRoute.post('/create', postCard);
 cardRoute.patch('/:id', patchCard);
 cardRoute.delete('/:id', delCard);
+
+// json route
+cardRoute.get('/json/:setid', getCardsJSON);
 
 export default cardRoute;
