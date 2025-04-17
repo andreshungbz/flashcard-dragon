@@ -13,7 +13,6 @@ const appconfig = {
   abbreviation: '[FCD]',
   port: PORT,
   url: `http://${getIPv4()}:${PORT}`,
-  paginationLimit: 5,
 
   db: {
     host: process.env.DB_HOST,
