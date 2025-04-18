@@ -8,7 +8,7 @@ import datestringConvert from '../utils/datestring-convert.js';
 import {
   createSet,
   deleteSet,
-  readRandomSet,
+  readRandomValidSet,
   readSet,
   updateSet,
 } from '../models/set-model.js';
@@ -23,13 +23,16 @@ export const getCreateSetPage = (_req: Request, res: Response) => {
 // renders the study page of a random set
 export const getRandomSetStudy = async (_req: Request, res: Response) => {
   try {
-    const randomUUID = await readRandomSet();
+    const randomUUID = await readRandomValidSet();
 
+    // when there are no flashcard sets or all sets have no cards
     if (!randomUUID) {
-      return res.status(404).render('error', { message: 'No Sets Yet' });
+      return res
+        .status(404)
+        .render('error', { message: 'No Valid Flashcard Sets Yet' });
     }
 
-    res.redirect(`/set/study/${randomUUID}`);
+    res.redirect(`/set/study/${randomUUID}?`);
   } catch (error) {
     console.error(error);
     res.status(500).render('error', { message: '500 Internal Server Error' });

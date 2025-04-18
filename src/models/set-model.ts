@@ -80,10 +80,18 @@ export const readSet = async (
   }
 };
 
-export const readRandomSet = async (): Promise<string> => {
+export const readRandomValidSet = async (): Promise<string> => {
   try {
     const result = await query(
-      'SELECT * FROM set ORDER BY RANDOM() LIMIT 1',
+      `
+      SELECT s.id
+      FROM set s
+      WHERE EXISTS (
+        SELECT 1 FROM card c WHERE c.set_id = s.id
+      )
+      ORDER BY RANDOM()
+      LIMIT 1
+      `,
       []
     );
 
