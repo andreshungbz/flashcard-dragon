@@ -1,6 +1,6 @@
 # 🐉 Flashcard Dragon
 
-Flashcard Dragon is a personal, self-hosted flashcard creator service and study tool.
+Flashcard Dragon is a personal, self-hosted flashcard creator and study tool. The web application uses Node.js, Express.js, TypeScript, and PostgreSQL.
 
 ## Project Features
 
@@ -18,7 +18,8 @@ Flashcard Dragon is a personal, self-hosted flashcard creator service and study 
 
 ## Running The Application
 
-These instructions assume you use a UNIX-like operating system (Linux, macOS, etc.). If you are using Windows, you may need to adjust the commands accordingly.
+> [!NOTE]
+> These instructions assume you use a UNIX-like operating system (Linux, macOS, etc.). If you are using Windows, you may need to adjust the commands accordingly.
 
 ### Prerequisites
 
@@ -63,7 +64,7 @@ npm install
 > These steps set up a database with predetermined names and credentials and insert example data.
 
 > [!NOTE]
-> Depending on your host-based configuration settings on PostgreSQL, you may be asked for a password. The default password for `fcd_user` is `swordfish`. The script also assumes a `postgres` user with superuser privileges is accessible. Users can change it in the `package.json` file with the CREATEROLE and CREATEDB attributes.
+> Depending on your host-based configuration settings on PostgreSQL, you may be asked for a password. The default password for `fcd_user` is `swordfish`. The script also assumes a `postgres` user with superuser privileges is accessible. However, you can change the username flag in the `package.json` `dbsetup` script to any user with the CREATEROLE and CREATEDB attributes.
 
 1. Run the following script:
 
@@ -83,7 +84,7 @@ npm run dev
 
 ## Tests
 
-Simple tests using `vitest` exist to test certain form input data and the utility functions. The tests can be examined in the `tests` folder. To run the tests, run the following command while the server is running in another terminal window:
+Simple tests using `vitest` exist to verify certain responses from specific form input data and utility functions. The tests can be examined in the `tests` folder. To run the tests, run the following command while the server is running in another terminal window:
 
 > [!NOTE]
 > The form input tests will fail if the server is not running.
