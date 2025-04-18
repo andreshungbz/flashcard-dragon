@@ -125,6 +125,11 @@ p {
   text-transform: uppercase;
 }
 
+.img {
+  max-height: 350px;
+  max-width: 350px;
+}
+
 /* responsive styling */
 
 @media screen and (max-width: 825px) {
