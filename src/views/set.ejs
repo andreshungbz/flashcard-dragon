@@ -27,7 +27,12 @@ page for set details and adding/removing cards
           <a class="set-grid-update" href="/set/update/<%= result.set.id %>"
             >Update</a
           >
-          <button form="delete-form" type="submit" class="set-grid-delete">
+          <button
+            id="delete-set-button"
+            form="delete-form"
+            type="submit"
+            class="set-grid-delete"
+          >
             Delete
           </button>
           <a class="set-grid-study" href="/set/study/<%= result.set.id %>"

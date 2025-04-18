@@ -28,3 +28,20 @@ list.addEventListener('click', async (event) => {
     console.error(error);
   }
 });
+
+// add a confirmation when deleting a flashcard set
+
+const deleteSetButton = document.querySelector('#delete-set-button');
+
+const confirmDeleteSet = (event) => {
+  const confirmed = confirm(
+    'Are you sure you want to delete this set? (All associated cards will be deleted)'
+  );
+
+  // this will prevent the form from submitting
+  if (!confirmed) {
+    event.preventDefault();
+  }
+};
+
+deleteSetButton.addEventListener('click', confirmDeleteSet);
