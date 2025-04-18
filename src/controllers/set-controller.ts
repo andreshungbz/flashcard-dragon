@@ -29,13 +29,13 @@ export const getRandomSetStudy = async (_req: Request, res: Response) => {
     if (!randomUUID) {
       return res
         .status(404)
-        .render('error', { message: 'No Valid Flashcard Sets Yet' });
+        .render('error', { message: 'No Valid Flashcard Sets Yet!' });
     }
 
     res.redirect(`/set/study/${randomUUID}?`);
   } catch (error) {
     console.error(error);
-    res.status(500).render('error', { message: '500 Internal Server Error' });
+    res.status(500).render('error', { message: '500 Internal Server Error!' });
   }
 };
 
@@ -47,7 +47,7 @@ export const getUpdateSetPage = async (req: Request, res: Response) => {
     res.render('update-set', { set: result.set });
   } catch (error) {
     console.error(error);
-    res.status(500).render('error', { message: '500 Internal Server Error' });
+    res.status(500).render('error', { message: '500 Internal Server Error!' });
   }
 };
 
@@ -67,7 +67,7 @@ export const getSetStudyPage = async (req: Request, res: Response) => {
     res.render('set-study', { set: result.set, max: result.cards.length });
   } catch (error) {
     console.error(error);
-    res.status(500).render('error', { message: '500 Internal Server Error' });
+    res.status(500).render('error', { message: '500 Internal Server Error!' });
   }
 };
 
@@ -83,7 +83,7 @@ export const getSet = async (req: Request, res: Response) => {
     res.render('set', { result });
   } catch (error) {
     console.error(error);
-    res.status(500).render('error', { message: '500 Internal Server Error' });
+    res.status(500).render('error', { message: '500 Internal Server Error!' });
   }
 };
 
@@ -98,14 +98,14 @@ export const postSet = async (req: Request, res: Response) => {
     // server-side required check
     if (!setName || !setDesc) {
       return res.status(400).render('error', {
-        message: 'Required Name/Description Field Missing',
+        message: 'Required Name/Description Field Missing!',
       });
     }
 
     // server-side set name length check
     if (setName.length > 100) {
       return res.status(400).render('error', {
-        message: 'Set Name Too Long',
+        message: 'Set Name Too Long!',
       });
     }
 
@@ -113,7 +113,7 @@ export const postSet = async (req: Request, res: Response) => {
     res.redirect(`/set/${id}`);
   } catch (error) {
     console.error(error);
-    res.status(500).render('error', { message: '500 Internal Server Error' });
+    res.status(500).render('error', { message: '500 Internal Server Error!' });
   }
 };
 
@@ -128,14 +128,14 @@ export const patchSet = async (req: Request, res: Response) => {
     // server-side required check
     if (!setName || !setDesc) {
       return res.status(400).render('error', {
-        message: 'Required Name/Description Field Missing',
+        message: 'Required Name/Description Field Missing!',
       });
     }
 
     // server-side set name length check
     if (setName.length > 100) {
       return res.status(400).render('error', {
-        message: 'Set Name Too Long',
+        message: 'Set Name Too Long!',
       });
     }
 
@@ -143,7 +143,7 @@ export const patchSet = async (req: Request, res: Response) => {
     res.redirect(`/set/${uuid}`);
   } catch (error) {
     console.error(error);
-    res.status(500).render('error', { message: '500 Internal Server Error' });
+    res.status(500).render('error', { message: '500 Internal Server Error!' });
   }
 };
 
@@ -155,6 +155,6 @@ export const delSet = async (req: Request, res: Response) => {
     res.redirect('/sets');
   } catch (error) {
     console.error(error);
-    res.status(500).render('error', { message: '500 Internal Server Error' });
+    res.status(500).render('error', { message: '500 Internal Server Error!' });
   }
 };

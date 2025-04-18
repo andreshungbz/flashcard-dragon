@@ -22,7 +22,7 @@ export const getUpdateCardPage = async (req: Request, res: Response) => {
     res.render('update-card', { card });
   } catch (error) {
     console.error(error);
-    res.status(500).render('error', { message: '500 Internal Server Error' });
+    res.status(500).render('error', { message: '500 Internal Server Error!' });
   }
 };
 
@@ -64,7 +64,7 @@ export const patchCard = async (req: Request, res: Response) => {
     // server-side required check
     if (!cardQuestion || !cardAnswer) {
       return res.status(400).render('error', {
-        message: 'Required Question/Answer Field Missing',
+        message: 'Required Question/Answer Field Missing!',
       });
     }
 
@@ -72,7 +72,7 @@ export const patchCard = async (req: Request, res: Response) => {
     res.redirect(`/set/${setID}`);
   } catch (error) {
     console.error(error);
-    res.status(500).render('error', { message: '500 Internal Server Error' });
+    res.status(500).render('error', { message: '500 Internal Server Error!' });
   }
 };
 
