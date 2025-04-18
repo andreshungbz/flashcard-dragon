@@ -1,3 +1,5 @@
+![Flashcard Dragon Header](assets/header.png)
+
 # 🐉 Flashcard Dragon
 
 Flashcard Dragon is a personal, self-hosted flashcard creator and study tool. The web application uses Node.js, Express.js, TypeScript, and PostgreSQL.
