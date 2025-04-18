@@ -16,6 +16,10 @@ Flashcard Dragon is a personal, self-hosted flashcard creator and study tool. Th
 - Flashcard shuffle
 - Study a random flashcard set
 
+## Additional Resources
+
+- [Google Slides Presentation](https://docs.google.com/presentation/d/1PDnU__wb4es-s9-fmoOAFeSx_LbUgAsjoR2lq4ACaLU/edit?usp=sharing)
+
 ## Running The Application
 
 > [!NOTE]
