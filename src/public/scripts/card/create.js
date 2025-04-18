@@ -55,6 +55,9 @@ const addCard = async (event) => {
   // reset form values
   inputQuestion.value = '';
   inputAnswer.value = '';
+
+  // focus first input for quick adds
+  inputQuestion.focus();
 };
 
 form.addEventListener('submit', addCard);
