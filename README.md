@@ -104,6 +104,8 @@ npm test
 - Some application settings can be changed in the `src/config/settings.ts` file.
 - This is the semester final project web application for the CMPS2212 GUI Programming course at the University of Belize, completed in the 2024-2 semester.
 
-## Attributions
+## License & Attributions
 
-Favicon dragon icon is copyright 2020 Twitter, Inc., and other contributors. The graphics are licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/). No modifications were made to the original image.
+- Favicon dragon icon is copyright 2020 Twitter, Inc., and other contributors. The graphics are licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/). No modifications were made to the original image.
+- The source code for this project is licensed under the [MIT License](LICENSE).
+- All other graphics are © 2025 Andres Hung and licensed under the [CC-BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/).
