@@ -126,8 +126,9 @@ p {
 }
 
 .img {
-  max-height: 350px;
+  display: block;
   max-width: 350px;
+  max-height: 350px;
 }
 
 /* responsive styling */
@@ -145,5 +146,10 @@ p {
 
   main {
     justify-content: start;
+  }
+
+  .img {
+    max-width: 100%;
+    height: auto;
   }
 }
