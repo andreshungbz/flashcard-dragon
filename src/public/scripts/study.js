@@ -89,28 +89,39 @@ const main = async () => {
   // keyboaard event listeners
 
   document.addEventListener('keydown', (e) => {
-    if (e.code === 'ArrowRight') {
-      nextButton.classList.add('enabled');
-    } else if (e.code === 'ArrowLeft') {
-      prevButton.classList.add('enabled');
+    switch (e.code) {
+      case 'ArrowRight':
+        nextButton.classList.add('enabled');
+        break;
+      case 'ArrowLeft':
+        prevButton.classList.add('enabled');
+        break;
+      default:
+        break;
     }
   });
 
   document.addEventListener('keyup', (e) => {
-    if (e.code === 'ArrowRight') {
-      nextButton.classList.remove('enabled');
-      if (!nextButton.disabled) {
-        animateCard(nextCard, 'switch');
-      }
-    } else if (e.code === 'ArrowLeft') {
-      prevButton.classList.remove('enabled');
-      if (!prevButton.disabled) {
-        animateCard(prevCard, 'switch');
-      }
-    } else if (e.code === 'Space') {
-      e.preventDefault(); // prevent page scrolling
-      showingAnswer = !showingAnswer;
-      animateCard(renderCard, 'flip');
+    switch (e.code) {
+      case 'ArrowRight':
+        nextButton.classList.remove('enabled');
+        if (!nextButton.disabled) {
+          animateCard(nextCard, 'switch');
+        }
+        break;
+      case 'ArrowLeft':
+        prevButton.classList.remove('enabled');
+        if (!prevButton.disabled) {
+          animateCard(prevCard, 'switch');
+        }
+        break;
+      case 'Space':
+        e.preventDefault(); // prevent page scrolling
+        showingAnswer = !showingAnswer;
+        animateCard(renderCard, 'flip');
+        break;
+      default:
+        break;
     }
   });
 
