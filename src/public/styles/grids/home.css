@@ -25,7 +25,6 @@
 }
 
 .home-grid-description {
-  justify-content: start;
   align-items: start;
   grid-area: 1 / 2 / 2 / 4;
   padding: 20px;
