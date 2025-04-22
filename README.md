@@ -68,12 +68,12 @@ npm install
 ### Database Setup
 
 > [!NOTE]
-> These steps set up a database with predetermined names and credentials and insert example data. The scripts executed can be examined in the `package.json` file and in the `src/config/database/scripts` folder.
+> These steps set up a database with predetermined names and credentials and insert example data. The scripts executed can be examined in the `package.json` file and the `src/config/database/scripts` folder.
 
 > [!IMPORTANT]
 > Depending on your host-based configuration settings on PostgreSQL, you may be asked for a password. The default password for `fcd_user` is `swordfish`. The script also assumes the default `postgres` database is available.
 
-1. Log into your `psql` client with the `postgres` superuser and paste the following in the `psql` prompt. This will create a new user which the rest of the scripts will use.
+1. Log into your `psql` client with the `postgres` superuser and paste the following in the `psql` prompt. This will create a new user for the rest of the scripts.
 
 ```
 DROP DATABASE IF EXISTS flashcard_dragon;
@@ -87,7 +87,7 @@ CREATE USER fcd_user WITH CREATEDB PASSWORD 'swordfish';
 \q
 ```
 
-1. Run the following script in the terminal:
+3. Run the following script in the terminal:
 
 ```
 npm run dbinitiate
