@@ -34,6 +34,7 @@ Flashcard Dragon is a personal, self-hosted flashcard creator and study tool. Th
 - Locally running [PostgreSQL](https://www.postgresql.org/) server
 
   - `postgres` user with superuser privileges
+  - `postgres` default database
 
 ### Initial Setup
 
@@ -66,13 +67,27 @@ npm install
 
 ### Database Setup
 
-> [!WARNING]
-> These steps set up a database with predetermined names and credentials and insert example data.
-
 > [!NOTE]
-> Depending on your host-based configuration settings on PostgreSQL, you may be asked for a password. The default password for `fcd_user` is `swordfish`. The script also assumes a `postgres` user with superuser privileges is accessible. However, you can change the username flag in the `package.json` `dbsetup` script to any user with the CREATEROLE and CREATEDB attributes.
+> These steps set up a database with predetermined names and credentials and insert example data. The scripts executed can be examined in the `package.json` file and in the `src/config/database/scripts` folder.
 
-1. Run the following script:
+> [!IMPORTANT]
+> Depending on your host-based configuration settings on PostgreSQL, you may be asked for a password. The default password for `fcd_user` is `swordfish`. The script also assumes the default `postgres` database is available.
+
+1. Log into your `psql` client with the `postgres` superuser and paste the following in the `psql` prompt. This will create a new user which the rest of the scripts will use.
+
+```
+DROP DATABASE IF EXISTS flashcard_dragon;
+DROP USER IF EXISTS fcd_user;
+CREATE USER fcd_user WITH CREATEDB PASSWORD 'swordfish';
+```
+
+2. Exit the `psql` client.
+
+```
+\q
+```
+
+1. Run the following script in the terminal:
 
 ```
 npm run dbinitiate
