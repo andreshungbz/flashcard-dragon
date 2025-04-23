@@ -106,6 +106,8 @@ local   all             all                                     scram-sha-256
 sudo systemctl restart postgresql
 ```
 
+### Run the Database Scripts
+
 5. In the terminal, run the following command to execute the database scripts:
 
 ```
@@ -116,6 +118,8 @@ npm run dbinitiate
 
 <details>
   <summary>Manual Method</summary>
+
+### Steps
 
 1. Ensure you are in the project root directory. Log in to `psql` as the `postgres` superuser and paste the following in the `psql` prompt.
 
