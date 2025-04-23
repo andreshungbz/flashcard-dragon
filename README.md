@@ -76,9 +76,6 @@ npm install
 <details>
   <summary>Script Method (quicker but may require changing PostgreSQL setting)</summary>
 
-> [!IMPORTANT]
-> The scripts will only work if your PostgreSQL host-based authentication configuration setting is set to `md5` or `scram-sha-256`.
-
 ### Update PostgreSQL HBA Configuration
 
 1. Log in to `psql` as the `postgres` superuser and run the following command to find the location of your PostgreSQL host-based authentication configuration file.
@@ -93,7 +90,7 @@ SHOW hba_file;
 sudo nano {YOUR_HBA_FILE_LOCATION}
 ```
 
-3. For the `local` unix socket connections row as well as any rows concerning `postgres`, change the `METHOD` to `md5` or `scram-sha-256` (better). It should look like this:
+3. For the `local` unix socket connections row and any rows concerning `postgres`, change the `METHOD` to `md5` or `scram-sha-256` (better). It should look like this:
 
 ```
 # Database administrative login by Unix domain socket
@@ -120,16 +117,13 @@ npm run dbinitiate
 <details>
   <summary>Manual Method</summary>
 
-> [!IMPORTANT]
-> Make sure you're in the project root directory.
-
-1. Log in to `psql` as the `postgres` superuser and paste the following in the `psql` prompt.
+1. Ensure you are in the project root directory. Log in to `psql` as the `postgres` superuser and paste the following in the `psql` prompt.
 
 ```
 \i ./src/config/database/scripts/setup.sql
 ```
 
-2. Connect in the new database.
+2. Connect to the new database.
 
 ```
 \c flashcard_dragon postgres
@@ -138,7 +132,7 @@ npm run dbinitiate
 3. Create the tables and example data.
 
 ```
-\i .src/config/database/scripts/tables.sql
+\i ./src/config/database/scripts/tables.sql
 ```
 
 </details>
