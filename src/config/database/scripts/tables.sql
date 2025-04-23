@@ -189,3 +189,12 @@ BEGIN
         (school_mascots_id, 'NC State', 'Wolf');
 
 END $$;
+
+-- Change ownership of all tables
+ALTER TABLE set OWNER TO fcd_user;
+ALTER TABLE card OWNER TO fcd_user;
+
+-- Change ownership of all functions
+ALTER FUNCTION update_set_updated_at_from_card() OWNER TO fcd_user;
+ALTER FUNCTION update_set_updated_at_self() OWNER TO fcd_user;
+ALTER FUNCTION update_card_updated_at() OWNER TO fcd_user;

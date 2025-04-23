@@ -7,6 +7,8 @@
 
 \echo '\n\033[1;31m[PSQL] Dropping Database\033[0m'
 DROP DATABASE IF EXISTS flashcard_dragon;
+DROP USER IF EXISTS fcd_user;
 
 \echo '\033[1;34m[PSQL] Creating Database\033[0m'
-CREATE DATABASE flashcard_dragon;
+CREATE USER fcd_user WITH CREATEDB PASSWORD 'swordfish';
+CREATE DATABASE flashcard_dragon OWNER fcd_user;

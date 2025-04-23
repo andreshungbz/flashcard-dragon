@@ -73,25 +73,75 @@ npm install
 > [!IMPORTANT]
 > Depending on your host-based configuration settings on PostgreSQL, you may be asked for a password. The default password for `fcd_user` is `swordfish`. The script also assumes the default `postgres` database is available.
 
-1. Log into your `psql` client with the `postgres` superuser and paste the following in the `psql` prompt. This will create a new user for the rest of the scripts.
+<details>
+  <summary>Script Method (quicker but may require changing PostgreSQL setting)</summary>
+
+> [!IMPORTANT]
+> The scripts will only work if your PostgreSQL host-based authentication configuration setting is set to `md5` or `scram-sha-256`.
+
+### Update PostgreSQL HBA Configuration
+
+1. Log in to `psql` as the `postgres` superuser and run the following command to find the location of your PostgreSQL host-based authentication configuration file.
 
 ```
-DROP DATABASE IF EXISTS flashcard_dragon;
-DROP USER IF EXISTS fcd_user;
-CREATE USER fcd_user WITH CREATEDB PASSWORD 'swordfish';
+SHOW hba_file;
 ```
 
-2. Exit the `psql` client.
+2. Return to your terminal and open the file in the `nano` text editor.
 
 ```
-\q
+sudo nano {YOUR_HBA_FILE_LOCATION}
 ```
 
-3. Run the following script in the terminal:
+3. For the `local` unix socket connections row as well as any rows concerning `postgres`, change the `METHOD` to `md5` or `scram-sha-256` (better). It should look like this:
+
+```
+# Database administrative login by Unix domain socket
+local   all             postgres                                scram-sha-256
+
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
+local   all             all                                     scram-sha-256
+```
+
+4. Save the file, then restart the PostgreSQL server daemon:
+
+```
+sudo systemctl restart postgresql
+```
+
+5. In the terminal, run the following command to execute the database scripts:
 
 ```
 npm run dbinitiate
 ```
+
+</details>
+
+<details>
+  <summary>Manual Method</summary>
+
+> [!IMPORTANT]
+> Make sure you're in the project root directory.
+
+1. Log in to `psql` as the `postgres` superuser and paste the following in the `psql` prompt.
+
+```
+\i ./src/config/database/scripts/setup.sql
+```
+
+2. Connect in the new database.
+
+```
+\c flashcard_dragon postgres
+```
+
+3. Create the tables and example data.
+
+```
+\i .src/config/database/scripts/tables.sql
+```
+
+</details>
 
 ### Start the Application
 
